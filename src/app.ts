@@ -1,4 +1,5 @@
 import express from "express"
+import usersController from "./module/users/users.controller"
 
 
 const app = express() // create app
@@ -6,6 +7,10 @@ const app = express() // create app
 
 // middleware
 app.use(express.json())
+
+
+// router middleware
+app.use("api/users", () => { })
 
 
 

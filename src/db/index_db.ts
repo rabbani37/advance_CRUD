@@ -11,6 +11,7 @@ export const initDB = async () => {
     id SERIAL PRIMARY KEY,
     name VARCHAR(75) NOT NULL,
     email VARCHAR(100) UNIQUE NOT NULL,
+    password_hash TEXT NOT NULL,
     age INT,
     role VARCHAR(20) NOT NULL DEFAULT 'user',
 
@@ -23,7 +24,7 @@ export const initDB = async () => {
     CREATE TABLE IF NOT EXISTS orders(
     id SERIAL PRIMARY KEY,
     customer_id INT NOT NULL REFERENCES users(id) ON DELETE CASCADE,
-    quentity INT NOT NULL,
+    quentity INT NOT NULL CHECK (quentity < 0),
     food TEXT NOT NULL,
     price NUMERIC(10, 2) NOT NULL,
 
