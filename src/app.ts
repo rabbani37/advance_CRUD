@@ -1,8 +1,8 @@
-import express from "express"
-import usersController from "./module/users/users.controller"
+import express, { type Application } from "express"
+import { logger } from "./middleware/logger";
 
 
-const app = express() // create app
+const app: Application = express() // create app
 
 
 // middleware
@@ -10,7 +10,8 @@ app.use(express.json())
 
 
 // router middleware
-app.use("api/users", () => { })
+app.use("api/users", () => { });
+app.use(logger)
 
 
 
