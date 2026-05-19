@@ -1,10 +1,11 @@
 import app from "./app"
+import config from "./Config/config.index";
 
 
 const main = async () => {
 
-    app.listen(7000, () => {
-        console.log("server is running port on : 6000");
+    app.listen(config.port, () => {
+        console.log(`Server is running  http://localhost:${config.port}`);
     })
 
 }
