@@ -1,5 +1,6 @@
 import express, { type Application } from "express"
 import { logger } from "./middleware/logger";
+import { globalError } from "./middleware/globalError";
 
 
 const app: Application = express() // create app
@@ -7,16 +8,19 @@ const app: Application = express() // create app
 
 // middleware
 app.use(express.json())
+app.use(logger)
 
 
 // router middleware
 app.use("api/users", () => { });
-app.use(logger)
+
+
 
 
 
 
 app.get("/", (req, res) => {
+    throw Error("Global Root Error")
     res.status(200,).json({ message: "This is express project" })
     // res.send("hello")
 })
@@ -29,7 +33,7 @@ app.get("/", (req, res) => {
 
 
 
-
+app.use(globalError)
 export default app;
 
 
