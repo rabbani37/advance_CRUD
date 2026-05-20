@@ -2,7 +2,7 @@ import type { Response } from "express";
 
 
 export function sendResponse<T>(res: Response, { message, data, error }:
-    { message: unknown, data?: T, error?: boolean }, statusCode: 200): void {
+    { message: unknown, data?: T, error?: boolean }, statusCode=200): void {
     res.status(statusCode).json(
         {
             success: error ? false : true,

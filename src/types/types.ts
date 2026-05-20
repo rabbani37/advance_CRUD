@@ -3,7 +3,7 @@ export const role = ["user", "admin", "superAdmin"] as const;
 type TRole = typeof role[number];
 
 
-type TUser = {
+export type TUser = {
     id: number;
     name: string;
     email: string;
@@ -14,7 +14,7 @@ type TUser = {
     update_at: Date;
 }
 
-export type RUser = Omit<TUser, "id" | "password_hash" | "created_at" | "update_at">;
+export type RUser = Omit<TUser, "id"  |"password_hash"| "created_at" | "update_at">;
 
 type TOrder = {
     id: number;

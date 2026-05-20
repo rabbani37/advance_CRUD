@@ -1,6 +1,6 @@
 import { neon } from "@neondatabase/serverless"
 import config from "../Config/config.index"
-const sql = neon(config.database_usrl);
+export const sql = neon(config.database_usrl);
 
 
 export const initDB = async () => {
@@ -12,7 +12,7 @@ export const initDB = async () => {
     name VARCHAR(75) NOT NULL,
     email VARCHAR(100) UNIQUE NOT NULL,
     password_hash TEXT NOT NULL,
-    age INT,
+    age INT NOT NULL,
     role VARCHAR(20) NOT NULL DEFAULT 'user',
 
     created_at TIMESTAMP NOT NULL DEFAULT NOW(),
